@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 
 
 app = Flask(__name__)
@@ -9,9 +9,11 @@ def tile(x, y, z):
     return "tile %s %s %s" % (x, y, z)
 
 
-@app.route('/'):
+@app.route('/')
 def home():
-    return "hello world!"
+    return render_template(
+        'home.html'
+    )
 
 
 if __name__ == '__main__':
