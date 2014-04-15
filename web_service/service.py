@@ -8,5 +8,6 @@ app = Flask(__name__)
 def tile(x, y, z):
     return "tile %s %s %s" % (x, y, z)
 
-    if __name__ == '__main__':
-        app.run(debug=True)
+
+if __name__ == '__main__':
+    app.run(debug=True)
