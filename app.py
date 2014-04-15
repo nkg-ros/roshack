@@ -1,5 +1,6 @@
-from flask import Flask, render_template, make_response
+from flask import Flask, render_template, make_response, send_file
 import tile
+import StringIO
 
 
 app = Flask(__name__)
@@ -11,9 +12,12 @@ def get_tile(x, y, z):
         list(range(256*256))
     )
 
-    response = make_response(image.tostring())
-    response.headers['Content-Type'] = 'image/png'
-    return response
+    tmp = StringIO.StringIO()
+
+    image.save(tmp, format="PNG")
+    tmp.seek(0, 0)
+
+    return send_file(tmp, mimetype="png")
 
 
 @app.route('/')
