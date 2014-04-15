@@ -8,6 +8,10 @@
 
     <!-- Bootstrap -->
     <link href={{url_for('static', filename="css/bootstrap.min.css")}} rel="stylesheet">
+    
+    <!-- leaflet libraries -->
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -16,10 +20,14 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
+  
   <body>
     <div class="container">
       <div class="row">
         <h1>RosHack!</h1>
+        
+        <div id="map" style="width: 1200px; height: 600px"></div>
+
       </div><!-- /row -->
     </div><!-- /container -->
 
@@ -28,5 +36,7 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src={{url_for('static', filename="js/bootstrap.min.js")}}></script>
     <script src={{url_for('static', filename="js/app.js")}}></script>
+    
+    
   </body>
 </html>
