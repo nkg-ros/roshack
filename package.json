@@ -1,0 +1,23 @@
+{
+  "name": "roshack",
+  "version": "0.0.0",
+  "description": "roshack =======",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nkg-ros/roshack.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nkg-ros/roshack/issues"
+  },
+  "homepage": "https://github.com/nkg-ros/roshack",
+  "devDependencies": {
+    "mongodb": "^1.4.0",
+    "monk": "^0.8.1"
+  }
+}
