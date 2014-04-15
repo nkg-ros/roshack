@@ -28,8 +28,11 @@ def render_image(data_list):
 
     # convert list to grid
     image = Image.new(mode='L', size=(256,256))
-    image.putdata(np.array(pixel_list))
 
+    li = np.array(pixel_list)
+
+    image.putdata(li)
+    image = image.transpose(Image.FLIP_TOP_BOTTOM)
     return image
 
 
