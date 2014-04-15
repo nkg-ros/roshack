@@ -10,6 +10,14 @@ def list_to_grid(data, size=None):
     return _chunks(data, size)
 
 
+def grid_to_list(data):
+    result = []
+    for sublist in data:
+        result = result + sublist
+
+    return result
+
+
 def _chunks(l, n):
     """ Yield successive n-sized chunks from l.
     """
