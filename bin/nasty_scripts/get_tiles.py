@@ -1,10 +1,10 @@
-from mongo import db
-
 import numpy as np
+
+from roshack.bin.nasty_scripts.mongo import db
 
 coll = db['raw_points']
 
-coll.ensure_index([('tile_x',1), ('tile_y',1)])
+coll.ensure_index([('tile_x', 1), ('tile_y', 1)])
 
 print "index done"
 

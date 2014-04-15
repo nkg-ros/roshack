@@ -1,8 +1,7 @@
-from mongo import db
-
 import numpy as np
-
 import math
+
+from roshack.bin.nasty_scripts.mongo import db
 
 coll = db['tiles']
 
@@ -54,12 +53,8 @@ def reduce_128(np_array):
 
     for x_off in range(2):
         for y_off in range(2):
-            print out.shape
-            print np_array.shape
-            print x_off, y_off
             out += np_array[x_off::2, y_off::2]
-            print "Now?", out.shape
-            
+
     return out
 
 
@@ -69,5 +64,13 @@ def generate_level(level):
     for xy in ((x,y) for x in range(sq_size) for y in range(sq_size)):
         generate_tile(level, xy[0], xy[1])
 
-
+print "Level 4"
+generate_level(4)
+print "Level 3"
+generate_level(3)
+print "Level 2"
+generate_level(2)
+print "Level 1"
+generate_level(1)
+print "Level 0"
 generate_level(0)

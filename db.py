@@ -14,8 +14,6 @@ db = client['ros']
 tiles = db['tiles']
 tiles_meta = db['tiles_meta']
 
-
-
 def get_tile_data(x, y, z):
     tile = tiles.find_one(
         {'_id': {'x': x, 'y': y, 'z': z}}

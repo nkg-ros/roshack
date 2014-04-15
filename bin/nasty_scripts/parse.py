@@ -1,11 +1,11 @@
 import csv
 
 from roshack.bin.nasty_scripts import scale
-from mongo import db
+from roshack.bin.nasty_scripts.mongo import db
 
 
-a = [-90, -180]
-b = [90, 180]
+a = [90, -180]
+b = [-90, 180]
 
 t = scale.project_to_square(a, b, 256 * 32)
 
@@ -20,7 +20,6 @@ with open('data/allCountries.txt', 'r') as fh:
     while True:
         try:
             row = read.next()
-
 
             if count % 10000 == 0:
                 print count

@@ -22,3 +22,8 @@ class Transform(object):
             (xy[0] + self.offset[0]) * self.scale[0],
             (xy[1] + self.offset[1]) * self.scale[1]
         ]
+
+
+t = project_to_square([-180, 90], [180, -90], 8192)
+
+print t.map_to([180, -90])

@@ -6,10 +6,15 @@ import os
 
 
 app = Flask(__name__)
+
 CURRENT_PATH = os.path.dirname(os.path.realpath(__file__))
 
 @app.route('/tile/<int:x>/<int:y>/<int:z>')
 def tile_endpoint(x, y, z):
+    if z > 5:
+        no_data = CURRENT_PATH + '/static/img/no_data.png'
+        print no_data
+        return send_file(no_data, mimetype="png")
 
     data = db.get_tile_data(x, y, z)
     if data is None:
