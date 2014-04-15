@@ -5,7 +5,7 @@ import db
 
 
 app = Flask(__name__)
-
+CURRENT_PATH = os.path.dirname(os.path.realpath(__file__))
 
 @app.route('/tile/<int:x>/<int:y>/<int:z>')
 def tile_endpoint(x, y, z):
