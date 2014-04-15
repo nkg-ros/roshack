@@ -16,7 +16,7 @@ def tile_endpoint(x, y, z):
         print no_data
         #return send_file(no_data, mimetype="image/png")
         resp = flask.make_response(open(fullpath).read())
-        resp.content_type = "image/jpeg"
+        resp.content_type = "image/png"
         return resp
 
     data = db.get_tile_data(x, y, z)
