@@ -14,7 +14,10 @@ def tile_endpoint(x, y, z):
     if z > 5:
         no_data = CURRENT_PATH + '/static/img/no_data.png'
         print no_data
-        return send_file(no_data, mimetype="png")
+        #return send_file(no_data, mimetype="image/png")
+        resp = flask.make_response(open(fullpath).read())
+        resp.content_type = "image/jpeg"
+        return resp
 
     data = db.get_tile_data(x, y, z)
     if data is None:
@@ -31,7 +34,7 @@ def tile_endpoint(x, y, z):
         image.save(tmp, format="PNG")
         tmp.seek(0, 0)
 
-        return send_file(tmp, mimetype="png")
+        return send_file(tmp, mimetype="image/png")
 
 
 @app.route('/')
