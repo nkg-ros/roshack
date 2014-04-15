@@ -2,10 +2,11 @@ from flask import Flask, render_template, make_response, send_file
 import tile
 import StringIO
 import db
+import os
 
 
 app = Flask(__name__)
-
+CURRENT_PATH = os.path.dirname(os.path.realpath(__file__))
 
 @app.route('/tile/<int:x>/<int:y>/<int:z>')
 def tile_endpoint(x, y, z):
