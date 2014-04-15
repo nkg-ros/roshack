@@ -1,4 +1,5 @@
-import png
+from PIL import Image
+import numpy as np
 
 
 SIZE = 256
@@ -7,7 +8,7 @@ SIZE = 256
 def list_to_grid(data, size=None):
     if size is None:
         size = SIZE
-    return _chunks(data, size)
+    return list(_chunks(data, size))
 
 
 def grid_to_list(data):
@@ -17,6 +18,29 @@ def grid_to_list(data):
 
     return result
 
+
+def render_image(data_list):
+    """
+    Render a 2D array of data as a 256x256 PNG
+    """
+    pixel_list = map(value_to_pixel, data_list)
+
+    # convert list to grid
+    grid = np.array(list_to_grid(pixel_list))
+
+    # create image
+    image = Image.fromarray(grid, 'L')
+    return image
+
+def value_to_pixel(value):
+    """
+    Turn a numerical value into a pixel array
+    ex: 12 -> [255, 255, 255]
+    """
+    if value == 0:
+        return 0
+    else:
+        return 255
 
 def _chunks(l, n):
     """ Yield successive n-sized chunks from l.
