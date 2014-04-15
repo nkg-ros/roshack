@@ -31,7 +31,7 @@ def render_image(data_list, m):
     li = curve(np.array(data_list), m)
 
     image.putdata(li)
-    image = image.transpose(Image.FLIP_TOP_BOTTOM)
+    # image = image.transpose(Image.FLIP_TOP_BOTTOM)
     return image
 
 
