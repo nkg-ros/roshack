@@ -2,6 +2,7 @@ from flask import Flask, render_template, make_response, send_file
 import tile
 import StringIO
 import db
+import os
 
 
 app = Flask(__name__)
