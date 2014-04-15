@@ -44,4 +44,3 @@
     }
 
     map.on('click', onMapClick);
-

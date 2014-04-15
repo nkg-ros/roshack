@@ -20,29 +20,19 @@ def grid_to_list(data):
     return result
 
 
-def render_image(data_list):
+def render_image(data_list, m):
     """
     Render a 2D array of data as a 256x256 PNG
     """
-    pixel_list = map(value_to_pixel, data_list)
 
     # convert list to grid
-    grid = np.array(list_to_grid(pixel_list))
+    image = Image.new(mode='L', size=(256,256))
 
-    # create image
-    image = Image.fromarray(grid, 'L')
+    li = curve(np.array(data_list), m)
+
+    image.putdata(li)
+    # image = image.transpose(Image.FLIP_TOP_BOTTOM)
     return image
-
-
-def value_to_pixel(value):
-    """
-    Turn a numerical value into a pixel array
-    ex: 12 -> [255, 255, 255]
-    """
-    if value == 0:
-        return 0
-    else:
-        return 255
 
 
 def _chunks(l, n):
@@ -53,8 +43,8 @@ def _chunks(l, n):
         yield l[i:i+n]
 
 
-def _curve(val, m):
-    return math.pow(
-        math.log(val) / math.log(m),
+def curve(a, m):
+    return np.power(
+        np.log(a + 1) / np.log(m + 1),
         1.5
-    )
+    ) * 255
