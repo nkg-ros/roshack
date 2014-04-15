@@ -1,5 +1,6 @@
 from PIL import Image
 import numpy as np
+import math
 
 
 SIZE = 256
@@ -32,6 +33,7 @@ def render_image(data_list):
     image = Image.fromarray(grid, 'L')
     return image
 
+
 def value_to_pixel(value):
     """
     Turn a numerical value into a pixel array
@@ -42,8 +44,17 @@ def value_to_pixel(value):
     else:
         return 255
 
+
 def _chunks(l, n):
-    """ Yield successive n-sized chunks from l.
+    """
+    Yield successive n-sized chunks from l.
     """
     for i in xrange(0, len(l), n):
         yield l[i:i+n]
+
+
+def _curve(val, m):
+    return math.pow(
+        math.log(val) / math.log(m),
+        1.5
+    )
