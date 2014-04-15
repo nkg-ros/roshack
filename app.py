@@ -1,23 +1,30 @@
 from flask import Flask, render_template, make_response, send_file
 import tile
 import StringIO
+import db
 
 
 app = Flask(__name__)
 
 
-@app.route('/tile/<string:x>/<string:y>/<string:z>')
-def get_tile(x, y, z):
-    image = tile.render_image(
-        list(range(256*256))
-    )
+@app.route('/tile/<int:x>/<int:y>/<int:z>')
+def tile_endpoint(x, y, z):
 
-    tmp = StringIO.StringIO()
+    data = db.get_tile_data(x, y, z)
+    if data is None:
+        print "NOPE"
+        return make_response("Not found.", 404)
+    else:
+        image = tile.render_image(
+            list(data['values'])
+        )
 
-    image.save(tmp, format="PNG")
-    tmp.seek(0, 0)
+        tmp = StringIO.StringIO()
 
-    return send_file(tmp, mimetype="png")
+        image.save(tmp, format="PNG")
+        tmp.seek(0, 0)
+
+        return send_file(tmp, mimetype="png")
 
 
 @app.route('/')
