@@ -16,7 +16,8 @@ def tile_endpoint(x, y, z):
         return make_response("Not found.", 404)
     else:
         image = tile.render_image(
-            list(data['values'])
+            list(data['values']),
+            z
         )
 
         tmp = StringIO.StringIO()
