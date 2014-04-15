@@ -27,10 +27,9 @@ def render_image(data_list):
     pixel_list = map(value_to_pixel, data_list)
 
     # convert list to grid
-    grid = np.array(list_to_grid(pixel_list))
+    image = Image.new(mode='L', size=(256,256))
+    image.putdata(np.array(pixel_list))
 
-    # create image
-    image = Image.fromarray(grid, 'L')
     return image
 
 
