@@ -12,3 +12,6 @@ $ pip install -r requirements.txt
 ```
 $ python app.py
 ```
+
+## Data source
+http://www.geonames.org/
